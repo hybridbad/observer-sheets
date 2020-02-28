@@ -1,7 +1,7 @@
 import config from '../config';
 
 /**
- * Load the cars from the spreadsheet
+ * Load the stats from the spreadsheet
  * Get the right values from it and assign.
  */
 export function load(callback) {

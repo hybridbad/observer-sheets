@@ -17,7 +17,8 @@ export function load(callback) {
           const stats = data.map(stat => ({
             category: stat[0],
             daily: stat[1],
-            monthly: stat[2]
+            monthly: stat[2],
+            year: stat[3]
           })) || [];
           callback({
             stats

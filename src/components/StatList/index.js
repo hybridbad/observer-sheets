@@ -1,6 +1,44 @@
 import React, { useState, useEffect } from 'react';
+import styled from 'styled-components';
 import { load } from '../../helpers/spreadsheet';
 import config from '../../config';
+
+const Container = styled.div`
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: center;
+`;
+
+const Row = styled.div`
+  display: flex;
+  flex-direction: row;
+  width: 70%;
+  height: 200px;
+  justify-content: space-between;
+  margin-bottom: 30px;
+`;
+
+const CardContainer = styled.div`
+  display: flex;
+  width: 45%;
+  height: 200px;
+  border: solid 4px black;
+  box-sizing: border-box;
+  box-shadow: 5px 10px #888888;
+  align-items: center;
+  justify-content: center;
+  padding: 15px;
+`;
+
+const Card = props => {
+  return (
+    <CardContainer>
+      {props.data}
+    </CardContainer>
+  )
+}
 
 export default() => {
   const [state, setState] = useState({
@@ -40,15 +78,13 @@ export default() => {
   }, [])
 
   return (
-    <div>
-    {console.log(state)}
-        <ul>
+    <Container>
         {state.stats && state.stats.map((statRow, i) => (
-          <li key={i}>
-            {statRow.category} {statRow.daily} {statRow.monthly}
-          </li>
+          <Row>
+            <Card data={statRow.category} />
+            <Card data={statRow.monthly} />
+          </Row>
         ))}
-      </ul>
-    </div>
+    </Container>
   )
 }

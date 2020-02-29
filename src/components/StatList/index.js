@@ -3,14 +3,6 @@ import styled from 'styled-components';
 import { load } from '../../helpers/spreadsheet';
 import config from '../../config';
 
-const Container = styled.div`
-  display: flex;
-  width: 100%;
-  flex-direction: column;
-  flex-wrap: wrap;
-  align-items: center;
-`;
-
 const Row = styled.div`
   display: flex;
   flex-direction: row;
@@ -78,13 +70,13 @@ export default() => {
   }, [])
 
   return (
-    <Container>
+    <>
         {state.stats && state.stats.map((statRow, i) => (
-          <Row>
+          <Row key={i}>
             <Card data={statRow.category} />
             <Card data={statRow.monthly} />
           </Row>
         ))}
-    </Container>
+    </>
   )
 }
